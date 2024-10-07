@@ -76,6 +76,42 @@ mxFDAobject = extract_summary_functions(mxFDAobject,
 plot(mxFDAobject, y = "fundiff", what = "bi g") +
   geom_hline(yintercept = 0, color = "red", linetype = 2)
 
+## ----eval = FALSE-------------------------------------------------------------
+#  #load in lung DF
+#  data(lung_df)
+#  #filter to only the clinical information
+#  clinical = lung_df %>%
+#    select(image_id, patient_id, patientImage_id, gender, age, survival_days, survival_status, stage) %>%
+#    distinct()
+#  #filter to cell information
+#  spatial = lung_df %>%
+#    select(-image_id, -gender, -age, -survival_days, -survival_status, -stage)%>%
+#    mutate(phenotype = case_when(phenotype_cd8 == "CD8+" ~ "T-cell",
+#                                 phenotype_cd14 == "CD14+" ~ "macrophage",
+#                                 TRUE ~ "other"),
+#           phenotype = factor(phenotype))
+#  #create the mxfda object
+#  mxFDAobject = make_mxfda(metadata = clinical,
+#                           spatial = spatial,
+#                           subject_key = "patient_id",
+#                           sample_key = "patientImage_id")
+#  #run entropy
+#  mxFDAobject = extract_summary_functions(mxFDAobject,
+#                                          extract_func = bivariate,
+#                                          summary_func = entropy,
+#                                          r_vec = seq(0, 100, by = 1),
+#                                          edge_correction = "iso",
+#                                          markvar = "phenotype",
+#                                          mark1 = "T-cell",
+#                                          mark2 = "macrophage")
+#  #plot
+#  mxFDAobject@bivariate_summaries$entropy %>%
+#    ggplot() +
+#    geom_line(aes(x = r, y = spatial_entropy,
+#                  group = patientImage_id, color = patientImage_id),
+#              alpha = 0.2) +
+#    theme(legend.position = "none")
+
 ## ----summary------------------------------------------------------------------
 mxFDAobject
 

@@ -1,6 +1,9 @@
-# mxFDA <img src="man/figures/logo_small.png" align="right" width="120" />
+# mxfda <img src="docs/reference/figures/logo.png" align="right" />
 
 <!-- badges: start -->
+[![](https://cranlogs.r-pkg.org/badges/mxfda)](https://CRAN.R-project.org/package=mxfda)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/mxfda)](https://CRAN.R-project.org/package=mxfda)
+[![](https://www.r-pkg.org/badges/version-ago/mxfda)](https://CRAN.R-project.org/package=mxfda)
 [![R-CMD-check](https://github.com/julia-wrobel/mxfda/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/julia-wrobel/mxfda/actions/workflows/R-CMD-check.yaml) 
 [![test-coverage](https://github.com/julia-wrobel/mxfda/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/julia-wrobel/mxfda/actions/workflows/test-coverage.yaml)
 <!-- badges: end -->
@@ -27,7 +30,7 @@ devtools::install_github("julia-wrobel/mxfda")
 To install a specific release of `mxfda`, use the `devtools` syntax. This is an example for installing the first release of `mxfda`:
 
 ```
-devtools::install_github('julia-wrobel/mxfda@v0.2.0')
+devtools::install_github('julia-wrobel/mxfda@v0.2.1')
 ```
 
 ## Vignettes and Function References

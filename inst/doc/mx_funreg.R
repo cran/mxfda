@@ -76,7 +76,7 @@ summary(extract_model(ovarian_FDA, 'uni g', 'cox', 'fit_lfcm'))
 ## -----------------------------------------------------------------------------
 lfcm_surface = extract_surface(ovarian_FDA, metric = "uni g", model = "fit_lfcm", analysis_vars = c("age"))
 
-plot(lfcm_surface)
+plot(lfcm_surface) + ylim(0, 10)
 
 ## -----------------------------------------------------------------------------
 ovarian_FDA <- run_fcm(ovarian_FDA, model_name = "fit_afcm", 
@@ -92,8 +92,8 @@ summary(extract_model(ovarian_FDA, 'uni g', 'cox', 'fit_afcm'))
 
 ## ----extract_estimates, fig.with = 12-----------------------------------------
 afcm_surface = extract_surface(ovarian_FDA, metric = "uni g", model = "fit_afcm", analysis_vars = c("age"), p = 0.05)
-plot(afcm_surface)
 
+plot(afcm_surface)
 
 ## -----------------------------------------------------------------------------
 fit_afcm = extract_model(ovarian_FDA, 'uni g', 'cox', 'fit_afcm')
@@ -119,14 +119,14 @@ ovarian_FDA <- run_sofr(ovarian_FDA,
 model = extract_model(ovarian_FDA, 'uni g', type = 'sofr', model_name = 'fit_sofr_age')
 plot(model, ylab=expression(paste(beta(t))), xlab="t")
 
-## ----eval = FALSE-------------------------------------------------------------
-#  ovarian_FDA <- run_sofr(ovarian_FDA,
-#                          model_name = "fit_sofr_stage",
-#                          formula = stage ~ age,
-#                          family = "binomial",
-#                          metric = "uni g", r = "r", value = "fundiff")
+## -----------------------------------------------------------------------------
+ovarian_FDA <- run_sofr(ovarian_FDA, 
+                        model_name = "fit_sofr_stage", 
+                        formula = stage ~ age, 
+                        family = "binomial",
+                        metric = "uni g", r = "r", value = "fundiff")
 
-## ----eval = FALSE-------------------------------------------------------------
-#  model = extract_model(ovarian_FDA, 'uni g', type = 'sofr', model_name = 'fit_sofr_stage')
-#  plot(model, ylab=expression(paste(beta(t))), xlab="t")
+## -----------------------------------------------------------------------------
+model = extract_model(ovarian_FDA, 'uni g', type = 'sofr', model_name = 'fit_sofr_stage')
+plot(model, ylab=expression(paste(beta(t))), xlab="t")
 

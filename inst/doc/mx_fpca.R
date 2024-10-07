@@ -76,7 +76,7 @@ mxFDAobject = extract_summary_functions(mxFDAobject,
 
 ## -----------------------------------------------------------------------------
 plot(mxFDAobject, y = "fundiff", what = "uni k", sampleID = "patientImage_id") +
-  geom_hline(yintercept = 0, color = "red", linetype = 2)
+  geom_hline(yintercept = 0, color = "red", linetype = 2) 
 
 ## -----------------------------------------------------------------------------
 mxFDAobject <- run_mfpca(mxFDAobject, 
